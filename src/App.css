@@ -1,0 +1,543 @@
+/* App.css — All styles for the Student Manager app */
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #1a202c;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   APP WRAPPER
+   ============================================================ */
+.app-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.app-header {
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 28px 20px;
+  background: linear-gradient(135deg, #1e3a5f, #2563eb);
+  border-radius: 16px;
+  color: white;
+}
+
+.app-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.app-subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TAB NAVIGATION
+   ============================================================ */
+.tab-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 14px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+  color: #4a5568;
+  border-color: #e2e8f0;
+}
+
+.tab-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Green tab — Add */
+.tab-green.tab-active {
+  background: #ebfdf4;
+  color: #065f46;
+  border-color: #10b981;
+}
+
+/* Blue tab — View */
+.tab-blue.tab-active {
+  background: #eff6ff;
+  color: #1e40af;
+  border-color: #3b82f6;
+}
+
+/* Amber tab — Update */
+.tab-amber.tab-active {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #f59e0b;
+}
+
+/* Red tab — Delete */
+.tab-red.tab-active {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #ef4444;
+}
+
+/* ============================================================
+   CARD (shared by all components)
+   ============================================================ */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e8edf3;
+}
+
+/* Card with red tint — used for Delete */
+.delete-card {
+  border-top: 4px solid #ef4444;
+}
+
+/* ============================================================
+   CARD HEADER (icon + title + subtitle)
+   ============================================================ */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.card-icon {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 2px;
+}
+
+.card-subtitle {
+  font-size: 13px;
+  color: #718096;
+}
+
+.card-subtitle code {
+  background: #f1f5f9;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: #4a5568;
+}
+
+/* Colored left border on header per operation */
+.add-header {
+  border-left: 4px solid #10b981;
+  padding-left: 14px;
+}
+.read-header {
+  border-left: 4px solid #3b82f6;
+  padding-left: 14px;
+}
+.update-header {
+  border-left: 4px solid #f59e0b;
+  padding-left: 14px;
+}
+.delete-header {
+  border-left: 4px solid #ef4444;
+  padding-left: 14px;
+}
+
+/* ============================================================
+   FORM GRID (2 columns on desktop, 1 on mobile)
+   ============================================================ */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 520px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Span both columns */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ============================================================
+   FORM LABELS
+   ============================================================ */
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.required {
+  color: #e53e3e;
+  margin-left: 2px;
+}
+
+.label-hint {
+  font-size: 11px;
+  color: #a0aec0;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   FORM INPUTS, SELECTS
+   ============================================================ */
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #1a202c;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input::placeholder {
+  color: #a0aec0;
+}
+
+/* Special styling for the ID input field */
+.id-input {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  background: #fffbeb;
+  border-color: #fbbf24;
+  letter-spacing: 0.5px;
+}
+
+.id-input:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  letter-spacing: 0.2px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Green button — Add */
+.btn-green {
+  background: #10b981;
+  color: white;
+}
+.btn-green:hover {
+  background: #059669;
+}
+
+/* Amber button — Update */
+.btn-amber {
+  background: #f59e0b;
+  color: white;
+}
+.btn-amber:hover {
+  background: #d97706;
+}
+
+/* Red button — Delete */
+.btn-red {
+  background: #ef4444;
+  color: white;
+}
+.btn-red:hover {
+  background: #dc2626;
+}
+
+/* Outline button — Cancel */
+.btn-outline {
+  background: white;
+  color: #4a5568;
+  border: 1.5px solid #e2e8f0;
+}
+.btn-outline:hover {
+  background: #f7fafc;
+}
+
+/* ============================================================
+   MESSAGES (success / error)
+   ============================================================ */
+.form-message {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #f0fdf4;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+/* ============================================================
+   SECTION DIVIDER (in Update form)
+   ============================================================ */
+.section-divider {
+  font-size: 11px;
+  font-weight: 600;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+/* ============================================================
+   STUDENT LIST (GetStudents)
+   ============================================================ */
+.student-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.student-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px solid #e8edf3;
+  border-radius: 12px;
+  transition: box-shadow 0.15s ease;
+}
+
+.student-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Avatar circle with initials */
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.student-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.student-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 2px;
+}
+
+.student-email {
+  font-size: 13px;
+  color: #3b82f6;
+  margin-bottom: 6px;
+}
+
+.student-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.meta-item {
+  font-size: 12px;
+  color: #718096;
+}
+
+/* Badges */
+.student-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-blue {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-green {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-gray {
+  background: #f1f5f9;
+  color: #4a5568;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+}
+
+/* Loading and empty states */
+.loading-text {
+  text-align: center;
+  color: #718096;
+  font-size: 14px;
+  padding: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 32px 16px;
+  color: #a0aec0;
+  font-size: 14px;
+  border: 2px dashed #e2e8f0;
+  border-radius: 12px;
+}
+
+/* ============================================================
+   WARNING BANNER (DeleteStudent)
+   ============================================================ */
+.warning-banner {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #78350f;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   CONFIRM BOX (DeleteStudent)
+   ============================================================ */
+.confirm-box {
+  background: #fef2f2;
+  border: 1.5px solid #fecaca;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 4px;
+}
+
+.confirm-text {
+  font-size: 14px;
+  color: #7f1d1d;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.confirm-id {
+  display: inline-block;
+  margin-top: 4px;
+  background: #fee2e2;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  color: #991b1b;
+  letter-spacing: 0.5px;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.app-footer {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 12px;
+  color: #a0aec0;
+  letter-spacing: 0.3px;
+}
